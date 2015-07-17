@@ -8,10 +8,7 @@ module Gitlab
     #
     # Returns boolean
     def markup?(filename)
-      gitlab_markdown?(filename) ||
-        asciidoc?(filename) ||
-        filename.downcase.end_with?(*%w(.textile .rdoc .org .creole .wiki
-                                        .mediawiki .rst))
+      false
     end
 
     # Public: Determines if a given filename is compatible with
@@ -21,7 +18,7 @@ module Gitlab
     #
     # Returns boolean
     def gitlab_markdown?(filename)
-      filename.downcase.end_with?(*%w(.mdown .md .markdown))
+      false
     end
 
     # Public: Determines if the given filename has AsciiDoc extension.
@@ -39,12 +36,11 @@ module Gitlab
     #
     # Returns boolean
     def plain?(filename)
-      filename.downcase.end_with?('.txt') ||
-        filename.downcase == 'readme'
+      true
     end
 
     def previewable?(filename)
-      markup?(filename)
+      false
     end
   end
 end
